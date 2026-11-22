@@ -8,7 +8,9 @@ const app = express();
 
 const allowedOrigins = [
     process.env.CLIENT_URL,
-    'http://localhost:5173'
+    'http://localhost:5173',
+    // Vercel automatically sets VERCEL_URL for each deployment
+    process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : null,
 ].filter(Boolean);
 
 app.use(cors({
